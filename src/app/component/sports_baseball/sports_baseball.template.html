@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-md-12">
+        <section class="widget widget-tabs">
+            <header>
+                <ul class="nav nav-tabs">
+                    <li *ngFor="let tab of tabNameAndIdVal;let i = index">
+                        <a href="#{{tab.id}}" data-toggle="tab" [ngClass]="{'active': i == 0}" (click)="beforeClickTabMed($event)">{{tab.name}}</a>
+                    </li>
+                </ul>
+            </header>
+            <div class="body tab-content">
+
+                <div *ngFor="let tabContent of tabDataVal; let i = index" id="{{tabContent.id}}"  class="tab-pane" [ngClass]="{'active clearfix': i == 0}">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Recent Games</span></h3>
+                          <div class="">
+                            <table [id]="getTableIdMed(false, tabContent)" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Home</th>
+                                  <th>Away</th>
+                                  <th>Referee 1</th>
+                                  <th>Referee 2</th>
+                                  <th>Rating</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let recent of tabContent.recent">
+                                  <td (click)="gotoRowDetailMed(recent)">{{recent.home}}</td>
+                                  <td (click)="gotoRowDetailMed(recent)">{{recent.away}}</td>
+                                  <td (click)="gotoRowDetailMed(recent)">{{recent.referee1}}</td>
+                                  <td (click)="gotoRowDetailMed(recent)">{{recent.referee2}}</td>
+                                  <td (click)="gotoRowDetailMed(recent)">{{recent.rating}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+
+                    <div class="col-md-6">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Feedback</span></h3>
+                          <div class="">
+                            {{tabContent.feedback}}
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Upcoming Games</span></h3>
+                          <div class="">
+                            <table [id]="getTableIdMed(true, tabContent)" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Home</th>
+                                  <th>Away</th>
+                                  <th>Loaction</th>
+                                  <th>Time</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let upcoming of tabContent.upcoming">
+                                  <td (click)="gotoRowDetailMed(upcoming)">{{upcoming.home}}</td>
+                                  <td (click)="gotoRowDetailMed(upcoming)">{{upcoming.away}}</td>
+                                  <td (click)="gotoRowDetailMed(upcoming)">{{upcoming.location.name}}</td>
+                                  <td (click)="gotoRowDetailMed(upcoming)">{{upcoming.time}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                    <div class="col-md-6">
+                      <section class="widget large">
+                        <header>
+                          <h4>League Feedback</h4>
+                        </header>
+                        <div class="">
+                          <nvd3 [options]="options" [data]="tabContent.pie"></nvd3>
+                        </div>
+                        <footer id="data-chart-footer" class="pie-chart-footer">
+                        </footer>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

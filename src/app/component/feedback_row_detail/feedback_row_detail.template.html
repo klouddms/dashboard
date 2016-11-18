@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-md-12 m-tb-1rem">
+    <a (click)="gotoBackPageMed()">Back > </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <section class="widget">
+      <header>
+      </header>
+      <div class="body">
+        <ul id="myTab" class="nav nav-tabs">
+          <li class="active"><a href="#home" data-toggle="tab">User</a></li>
+          <li><a href="#profile" data-toggle="tab">Game</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in active" id="home">
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table detail-table">
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td><img [src]="userTableDataVal.picture" /></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td>{{userTableDataVal.name}}</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>{{userTableDataVal.email}}</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Phone</td>
+                      <td>{{userTableDataVal.phone}}</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Fellowup</td>
+                      <td>{{userTableDataVal.fellowup}}</td>
+                      <td><a class="btn btn-primary btn-sm">Contact</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile">
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table detail-table">
+                  <tbody>
+                    <tr>
+                      <td>Name</td>
+                      <td>{{gameTableDataVal}}</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="col-md-6">
+    <section class="widget">
+      <header>
+      </header>
+      <div class="body">
+        <ul id="myTab" class="nav nav-tabs">
+          <li class="active"><a href="#home" data-toggle="tab">Referee</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in active" id="home">
+            <table class="table detail-table">
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td><img  [src]="refereeTableDataVal.picture"/></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Name</td>
+                  <td>{{refereeTableDataVal.name}}</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>{{refereeTableDataVal.email}}</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Contact</td>
+                  <td>{{refereeTableDataVal.contact}}</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Rating</td>
+                  <td><rating [(ngModel)]="refereeTableDataVal.rating" [readonly]="true" [max]="5"></rating></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <section class="widget">
+      <header>
+        <h5>Comments</h5>
+      </header>
+      <div class="body">
+        <p>
+          {{feedbackDataVal}}
+        </p>
+      </div>
+    </section>
+  </div>
+  <div class="col-md-6">
+    <section class="widget">
+      <header>
+        <h5>Sentiments</h5>
+      </header>
+      <div class="body">
+        <img [src]="sentimentPictureVal"/>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <section class="widget">
+      <header>
+        <h5>
+          Rating
+        </h5>
+      </header>
+      <div class="body">
+        <rating [(ngModel)]="rating" [readonly]="true" [max]="5">
+        </rating>
+      </div>
+    </section>
+
+  </div>
+</div>

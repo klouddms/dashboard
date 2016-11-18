@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-md-12">
+    <section class="widget">
+      <div class="widget-body">
+        <h3><span class="fw-semi-bold">Recent Games</span></h3>
+        <div class="">
+          <table id="all-sports-recent-table" class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Game</th>
+                <th>Sport</th>
+                <th>Date</th>
+                <th>Commenter</th>
+                <th>Feedback</th>
+                <th>Sentiment</th>
+                <th>Contact?</th>
+                <th>Respond</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let recentRow of recentTableDataVal'>
+                <td (click)="gotoDetailMed(recentRow)">{{recentRow.game}}</td>
+                <td (click)="gotoDetailMed(recentRow)">{{recentRow.sport}}</td>
+                <td (click)="gotoDetailMed(recentRow)">{{recentRow.date}}</td>
+                <td (click)="gotoDetailMed(recentRow)">{{recentRow.commenter}}</td>
+                <td (click)="gotoDetailMed(recentRow)">{{recentRow.feedback}}</td>
+                <td (click)="gotoDetailMed(recentRow)">{{recentRow.sentiment}}</td>
+                <td >{{recentRow.contact}}</td>
+                <td>{{recentRow.respond}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="col-md-6">
+    <section class="widget">
+      <div class="widget-body">
+        <h3><span class="fw-semi-bold">Upcoming Games</span></h3>
+        <div class="">
+          <table id="all-sports-upcoming-table" class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Game</th>
+                <th>Sport</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let upcomingRow of upcomingTableDataVal">
+                <td (click)="gotoDetailMed(upcomingRow)">{{upcomingRow.game}}</td>
+                <td (click)="gotoDetailMed(upcomingRow)">{{upcomingRow.sport}}</td>
+                <td (click)="gotoDetailMed(upcomingRow)">{{upcomingRow.date}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="col-md-6">
+    <section class="widget large">
+      <header>
+        <h4>League Feedback</h4>
+      </header>
+      <div class="">
+        <nvd3 [options]="optionsVal" [data]="dataVal"></nvd3>
+      </div>
+      <footer id="data-chart-footer" class="pie-chart-footer">
+      </footer>
+    </section>
+  </div>
+</div>

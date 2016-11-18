@@ -1,0 +1,124 @@
+<div class="row">
+  <div class="col-md-8">
+      <section class="widget">
+          <div class="widget-body feedback">
+              <h3><span class="fw-semi-bold">Feedback</span></h3>
+              <div class="">
+                  <table id="dashborad-datatable-table" class="table table-striped table-hover">
+                      <thead>
+                      <tr>
+                          <th>Game</th>
+                          <th>Commenter</th>
+                          <th  class="no-sort hidden-xs">Feedback</th>
+                          <th>Contact?</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let feedbackRow of feedbackTableDataVal">
+                          <td>{{feedbackRow.game}}</td>
+                          <td>{{feedbackRow.commenter}}</td>
+                          <td>{{feedbackRow.feedback}}</td>
+                          <td>{{feedbackRow.contact}}</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </section>
+  </div>
+  <div class="col-md-4">
+      <section class="widget large">
+          <header>
+              <h4>League Feedback</h4>
+          </header>
+          <div class="body">
+              <nvd3 [options]="optionsVal" [data]="dataVal"></nvd3>
+          </div>
+          <footer id="data-chart-footer" class="pie-chart-footer">
+          </footer>
+      </section>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4">
+      <section class="widget">
+          <div class="widget-body">
+              <h3><span class="fw-semi-bold">Recent Games</span></h3>
+              <div class="only-pagination">
+                  <table  id="dashborad-recent-table" class="table table-striped table-hover">
+                      <thead>
+                      <tr>
+                          <th>Game</th>
+                          <th>Ref</th>
+                          <th>Ref2</th>
+                          <th>Ref3</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let recentRow of recentTableDataVal">
+                          <td>{{recentRow.game}}</td>
+                          <td>{{recentRow.ref1}}</td>
+                          <td>{{recentRow.ref2}}</td>
+                          <td>{{recentRow.ref3}}</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </section>
+  </div>
+
+  <div class="col-md-4">
+      <section class="widget">
+          <div class="widget-body">
+              <h3><span class="fw-semi-bold">Upcoming Games</span></h3>
+              <div class="only-pagination">
+                  <table  id="dashborad-upcoming-table" class="table table-striped table-hover">
+                      <thead>
+                      <tr>
+                        <th>Game</th>
+                        <th>Ref</th>
+                        <th>Ref2</th>
+                        <th>Ref3</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let upcomingRow of upcomingTableDataVal">
+                        <td>{{upcomingRow.game}}</td>
+                        <td>{{upcomingRow.ref1}}</td>
+                        <td>{{upcomingRow.ref2}}</td>
+                        <td>{{upcomingRow.ref3}}</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </section>
+  </div>
+
+  <div class="col-md-4">
+      <section class="widget">
+          <div class="widget-body">
+              <h3><span class="fw-semi-bold">Top Referees</span></h3>
+              <div class="only-pagination">
+                  <table  id="dashborad-referee-table" class="table table-striped table-hover">
+                      <thead>
+                      <tr>
+                        <th>Referee</th>
+                        <th>score</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let topRow of topRefereeTableDataVal">
+                          <td>{{topRow.referee}}</td>
+                          <td>{{topRow.score}}</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </section>
+  </div>
+</div>

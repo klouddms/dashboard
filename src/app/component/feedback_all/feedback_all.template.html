@@ -1,0 +1,337 @@
+<div class="row">
+    <div class="col-md-12">
+        <section class="widget widget-tabs">
+            <header>
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#stats" data-toggle="tab" (click)="beforeClickTabMed($event)">All</a>
+                    </li>
+                    <li>
+                      <a href="#positive" data-toggle="tab" (click)="beforeClickTabMed($event)">Positive</a>
+                    </li>
+                    <li>
+                        <a href="#report" data-toggle="tab" (click)="beforeClickTabMed($event)">Negative</a>
+                    </li>
+                    <li>
+                        <a href="#neutral" data-toggle="tab" (click)="beforeClickTabMed($event)">Neutral</a>
+                    </li>
+
+                </ul>
+            </header>
+            <div class="body tab-content">
+                <div id="stats" class="tab-pane active clearfix">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Recent Games</span></h3>
+                          <div class="">
+                            <table id="all-feedback-recent-table" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Game</th>
+                                  <th>Sport</th>
+                                  <th>Date</th>
+                                  <th>Commenter</th>
+                                  <th>Feedback</th>
+                                  <th>Sentiment</th>
+                                  <th>Contact?</th>
+                                  <th>Respond</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor='let recentRow of allRecentTableDataVal'>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.game}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.sport}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.date}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.commenter}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.feedback}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.sentiment}}</td>
+                                  <td>{{recentRow.contact}}</td>
+                                  <td>{{recentRow.respond}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Upcoming Games</span></h3>
+                          <div class="only-pagination">
+                            <table id="all-feedback-upcoming-table" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Game</th>
+                                  <th>Sport</th>
+                                  <th>Date</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let upcomingRow of allUpcomingTableDataVal">
+                                  <td>{{upcomingRow.game}}</td>
+                                  <td>{{upcomingRow.sport}}</td>
+                                  <td>{{upcomingRow.date}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                    <div class="col-md-6">
+                      <section class="widget large">
+                        <header>
+
+                        </header>
+                        <div  class="chart pie-chart">
+                          <nvd3 #allPieChart id="allPieChart" [options]="options" [data]="allDataVal"></nvd3>
+                        </div>
+                        <footer id="data-chart-footer" class="pie-chart-footer">
+                        </footer>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+                <div id="positive" class="tab-pane">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Recent Games</span></h3>
+                          <div class="">
+                            <table id="positive-feedback-recent-table" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Game</th>
+                                  <th>Sport</th>
+                                  <th>Date</th>
+                                  <th>Commenter</th>
+                                  <th>Feedback</th>
+                                  <th>Sentiment</th>
+                                  <th>Contact?</th>
+                                  <th>Respond</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor='let recentRow of positiveRecentTableDataVal'>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.game}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.sport}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.date}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.commenter}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.feedback}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.sentiment}}</td>
+                                  <td>{{recentRow.contact}}</td>
+                                  <td>{{recentRow.respond}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Upcoming Games</span></h3>
+                          <div class="only-pagination">
+                            <table id="positive-feedback-upcoming-table" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Game</th>
+                                  <th>Sport</th>
+                                  <th>Date</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let upcomingRow of positiveUpcomingTableDataVal">
+                                  <td>{{upcomingRow.game}}</td>
+                                  <td>{{upcomingRow.sport}}</td>
+                                  <td>{{upcomingRow.date}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                    <div class="col-md-6">
+                      <section class="widget large">
+                        <header>
+
+                        </header>
+                        <div  class="chart pie-chart">
+                          <nvd3 #positivePieChart id="positivePieChart" [options]="options" [data]="positiveDataVal"></nvd3>
+                        </div>
+                        <footer id="data-chart-footer" class="pie-chart-footer">
+                        </footer>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+                <div id="report" class="tab-pane">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Recent Games</span></h3>
+                          <div class="">
+                            <table id="negative-feedback-recent-table" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Game</th>
+                                  <th>Sport</th>
+                                  <th>Date</th>
+                                  <th>Commenter</th>
+                                  <th>Feedback</th>
+                                  <th>Sentiment</th>
+                                  <th>Contact?</th>
+                                  <th>Respond</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor='let recentRow of negativeRecentTableDataVal'>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.game}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.sport}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.date}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.commenter}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.feedback}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.sentiment}}</td>
+                                  <td>{{recentRow.contact}}</td>
+                                  <td>{{recentRow.respond}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Upcoming Games</span></h3>
+                          <div class="only-pagination">
+                            <table id="negative-feedback-upcoming-table" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Game</th>
+                                  <th>Sport</th>
+                                  <th>Date</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let upcomingRow of negativeUpcomingTableDataVal">
+                                  <td>{{upcomingRow.game}}</td>
+                                  <td>{{upcomingRow.sport}}</td>
+                                  <td>{{upcomingRow.date}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                    <div class="col-md-6">
+                      <section class="widget large">
+                        <header>
+
+                        </header>
+                        <div class="">
+                          <nvd3 [options]="options" [data]="negativeDataVal"></nvd3>
+                        </div>
+                        <footer id="data-chart-footer" class="pie-chart-footer">
+                        </footer>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+                <div id="neutral" class="tab-pane">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Recent Games</span></h3>
+                          <div class="">
+                            <table id="neutral-feedback-recent-table" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Game</th>
+                                  <th>Sport</th>
+                                  <th>Date</th>
+                                  <th>Commenter</th>
+                                  <th>Feedback</th>
+                                  <th>Sentiment</th>
+                                  <th>Contact?</th>
+                                  <th>Respond</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor='let recentRow of neutralRecentTableDataVal'>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.game}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.sport}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.date}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.commenter}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.feedback}}</td>
+                                  <td (click)="gotoDetailMed(recentRow)">{{recentRow.sentiment}}</td>
+                                  <td>{{recentRow.contact}}</td>
+                                  <td>{{recentRow.respond}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <section class="widget">
+                        <div class="widget-body">
+                          <h3><span class="fw-semi-bold">Upcoming Games</span></h3>
+                          <div class="only-pagination">
+                            <table id="neutral-feedback-upcoming-table" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Game</th>
+                                  <th>Sport</th>
+                                  <th>Date</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let upcomingRow of neutralUpcomingTableDataVal">
+                                  <td>{{upcomingRow.game}}</td>
+                                  <td>{{upcomingRow.sport}}</td>
+                                  <td>{{upcomingRow.date}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                    <div class="col-md-6">
+                      <section class="widget large">
+                        <header>
+
+                        </header>
+                        <div class="col-xs-12">
+                          <nvd3 class="col-xs-12" [options]="options" [data]="neutralDataVal"></nvd3>
+                        </div>
+                        <footer id="data-chart-footer" class="pie-chart-footer">
+                        </footer>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
